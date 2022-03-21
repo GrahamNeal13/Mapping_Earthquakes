@@ -17,14 +17,14 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
 
 // Create a base layer that holds both maps.
 let baseMaps = {
-    "Street": streets,
+    "Streets": streets,
     "Satellite Streets": satelliteStreets
   };
 
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
     center: [43, -79.3],
-    zoom: 2,
+    zoom: 11,
     layers: [satelliteStreets]
 })  
 
