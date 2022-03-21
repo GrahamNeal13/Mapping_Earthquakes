@@ -31,18 +31,12 @@ let map = L.map('mapid', {
 // Pass our map layers into our layer control and the layer control to our map.
 L.control.layers(baseMaps).addTo(map);
 
-// Accessing the airport GeoJSON URL
-let airportData = "https://raw.githubusercontent.com/GrahamNeal13/Mapping_Earthquakes/main/Mapping_GeoJSON_Points/static/js/majorAirports.json";
+// Accessing the Toronto neighborhoods GeoJSON URL.
+let torontoHoods = "https://raw.githubusercontent.com/GrahamNeal13/Mapping_Earthquakes/main/Mapping_GeoJSON_Polygons/static/js/torontoNeighborhoods.json";
 
 // Grabbing our GeoJSON data.
-d3.json(airportData).then(function(data) {
+d3.json(torontoHoods).then(function(data) {
     console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
-  L.geoJson(data, {
-    // We turn each feature into a marker on the map.
-    onEachFeature: function(feature, layer) {
-      console.log(layer);
-      layer.bindPopup("<h2> Airport Code: " + feature.properties.faa + "</h2> <hr> <h3> Airport name: " + feature.properties.name + "</h3>");
-    }
-  }).addTo(map);
+  L.geoJson(data).addTo(map);
   });
